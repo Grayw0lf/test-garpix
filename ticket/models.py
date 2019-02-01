@@ -1,14 +1,15 @@
 from django.db import models
 from django.conf import settings
-from django_fsm import FSMField
-
-
-STATES = ('Новый', 'Назначен', 'Обрабатывается', 'Выполнен', 'Закрыт',
-          'Отменен', 'Переоткрыт')
-STATES = list(zip(STATES, STATES))
+from django_fsm import FSMField, transition
 
 
 class Ticket(models.Model):
+    STATES = ('Новый', 'Назначен', 'Обрабатывается', 'Выполнен', 'Закрыт',
+              'Отменен', 'Переоткрыт')
+    # STATES = ('New', 'Assigned', 'In Progress', 'Fulfilled', 'Closed',
+    #           'Chanceled', 'Re Opened')
+    STATES = list(zip(STATES, STATES))
+
     title = models.CharField(max_length=255, unique=True)
     description = models.TextField()
     state = FSMField(default=STATES[0], choices=STATES)
