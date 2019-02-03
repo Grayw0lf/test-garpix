@@ -18,6 +18,7 @@ class Ticket(models.Model):
                                related_name='author')
     responsible = models.ForeignKey(settings.AUTH_USER_MODEL,
                                     on_delete=models.SET_NULL,
+                                    blank=True,
                                     null=True,
                                     related_name='responsible')
     created = models.DateTimeField(auto_now_add=True)
@@ -43,7 +44,7 @@ class Ticket(models.Model):
     def closed(self):
         pass
 
-    @transition(field=state, source='In Progress', target=('Chanceled'))
+    @transition(field=state, source='In Progress', target='Chanceled')
     def chanceled(self):
         pass
 
