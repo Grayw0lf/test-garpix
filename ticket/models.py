@@ -25,3 +25,23 @@ class Ticket(models.Model):
 
     def __str__(self):
         return self.title
+
+    @transition(field=state, source='New', target='Assigned')
+    def assigned(self):
+        pass
+
+    @transition(field=state, source='Assigned', target='In Progress')
+    def in_progress(self):
+        pass
+
+    def fulfilled(self):
+        pass
+
+    def closed(self):
+        pass
+
+    def chansceled(self):
+        pass
+
+    def reopened(self):
+        pass
