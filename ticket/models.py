@@ -34,6 +34,7 @@ class Ticket(models.Model):
     def in_progress(self):
         pass
 
+    @transition(field=state, source='In Progress', target='Fulfilled')
     def fulfilled(self):
         pass
 
