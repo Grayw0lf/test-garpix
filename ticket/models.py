@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-from django_fsm import FSMField, transition
+from django_fsm import FSMField, transition, RETURN_VALUE
 
 
 class Ticket(models.Model):
@@ -38,11 +38,16 @@ class Ticket(models.Model):
     def fulfilled(self):
         pass
 
+    @transition(field=state, source=RETURN_VALUE('Fulfilled', 'Chanceled'),
+                target='Closed')
     def closed(self):
         pass
 
+    @transition(field=state, source='In Progress', target=('Chanceled'))
     def chanceled(self):
         pass
 
+    @transition(field=state, source=RETURN_VALUE('Fulfilled', 'Chanceled'),
+                target='Re Opened')
     def reopened(self):
         pass
