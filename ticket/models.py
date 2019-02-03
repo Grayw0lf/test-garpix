@@ -41,7 +41,7 @@ class Ticket(models.Model):
     def closed(self):
         pass
 
-    def chansceled(self):
+    def chanceled(self):
         pass
 
     def reopened(self):
