@@ -4,10 +4,10 @@ from django_fsm import FSMField, transition
 
 
 class Ticket(models.Model):
-    STATES = ('Новый', 'Назначен', 'Обрабатывается', 'Выполнен', 'Закрыт',
-              'Отменен', 'Переоткрыт')
-    # STATES = ('New', 'Assigned', 'In Progress', 'Fulfilled', 'Closed',
-    #           'Chanceled', 'Re Opened')
+    # ('Новый', 'Назначен', 'Обрабатывается', 'Выполнен', 'Закрыт',
+    #         'Отменен', 'Переоткрыт')
+    STATES = ('New', 'Assigned', 'In Progress', 'Fulfilled', 'Closed',
+              'Chanceled', 'Re Opened')
     STATES = list(zip(STATES, STATES))
 
     title = models.CharField(max_length=255, unique=True)
