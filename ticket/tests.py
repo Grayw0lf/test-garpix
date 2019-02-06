@@ -10,14 +10,14 @@ from rest_framework.test import APITestCase
 class TicketFlowTest(APITestCase):
     user_password = None
 
-    def setup(self):
+    def setUp(self):
         # Создаем рандомный пароль
         self.user_password = ''.join(random.choices(
             string.ascii_uppercase + string.digits, k=8)
         )
         # Генерируем тестовых пользователей
         for i in range(3):
-            setattr(self, 'user_{}'.format(i), get_user_model().objects.create(
+            setattr(self, 'user_{}'.format(i), get_user_model().objects.create_user(
                 username='user_{}'.format(i),
                 email='user{}@localhost.local'.format(i),
                 password=self.user_password
