@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_framework_swagger',
     'django_filters',
+    'django_extensions',
 
     # Local apps
     'ticket.apps.TicketConfig',
