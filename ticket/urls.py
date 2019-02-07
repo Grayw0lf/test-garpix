@@ -7,7 +7,7 @@ from .views import TicketViewSet, UserStatisticViewSet
 
 router = DefaultRouter()
 router.register('tickets', TicketViewSet, basename='tickets')
-router.register('statistic', UserStatisticViewSet)
+router.register('statistic', UserStatisticViewSet, basename='statistic')
 
 schema_view = get_swagger_view(title='Ticket API')
 

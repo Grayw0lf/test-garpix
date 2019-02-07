@@ -24,7 +24,7 @@ class TicketFlowTest(APITestCase):
             ))
 
     def test_ticket_created(self):
-        url = reverse('ticket:ticket-list')
+        url = reverse('ticket:tickets-list')
         data = {'title': 'Тикет', 'description': 'Описание'}
         response1 = self.client.post(url, data, format='json')
         # Проверяем, что неавторизованный юзер не может создать тикет
@@ -35,4 +35,5 @@ class TicketFlowTest(APITestCase):
         self.assertEqual(response2.status_code, status.HTTP_201_CREATED)
 
     def _authorize(self, user):
-        self.client.credentials(HTTP_AUTHORIZATION='Token ' + getattr(self, user).auth_token.key)
+        self.client.credentials(HTTP_AUTHORIZATION='Token ' + getattr(self, user)
+                                .auth_token.key)
